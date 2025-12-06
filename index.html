@@ -1,186 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Configuración inicial del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título de la página que aparece en la pestaña del navegador -->
-    <title>Mi Sitio Web Paso a Paso</title>
-    
-    <!-- Fuente Montserrat desde Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Script para cargar Tailwind CSS para estilos rápidos -->
+    <title>Catálogo de Trapeadores - NextGen Trapeadores</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Estilos básicos para la nueva tipografía (Montserrat para títulos/logo, system-ui para cuerpo) */
-        body {
-            font-family: 'system-ui', sans-serif; /* Fuente del cuerpo para alta legibilidad */
-            min-height: 100vh;
-            background-color: #f7f7f7; /* Fondo gris claro */
-            margin: 0;
-            padding-top: 64px; /* Añade espacio en la parte superior para que el navbar fijo no tape el contenido */
+        /* Animación suave para las tarjetas */
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        
-        /* Aplicamos Montserrat específicamente al logo/título donde la usaremos */
-        .font-logo {
-            font-family: 'Montserrat', sans-serif;
+        /* Estilos opcionales para mejorar la apariencia del scroll en algunos navegadores */
+        #product-grid::-webkit-scrollbar {
+            height: 8px;
         }
-
-        /* Contenedor central: quitamos el padding para que el carrusel sea full width */
-        #content-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Alineamos el contenido al inicio (arriba) */
-            width: 100%;
-            flex-direction: column; /* Aseguramos que los elementos fluyan verticalmente */
+        #product-grid::-webkit-scrollbar-thumb {
+            background-color: #93C5FD; /* blue-300 */
+            border-radius: 10px;
         }
-        
-        /* Estilo para la barra de desplazamiento horizontal oculta */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+        #product-grid::-webkit-scrollbar-track {
+            background: #E0F2F7; /* cyan-50 */
         }
     </style>
 </head>
-<body>
-    <!-- 1. BARRA DE NAVEGACIÓN SUPERIOR (NAVBAR) -->
-    <nav class="fixed top-0 w-full h-16 bg-blue-50 shadow-md z-10 flex items-center px-4 md:px-8">
-        <!-- NextGen Logo (Next en azul fuerte, Gen en azul cielo, letras más juntas) -->
-        <div class="font-logo text-2xl font-extrabold text-blue-800 tracking-tight">
-            Next<span class="text-blue-400">Gen</span>
-        </div>
-    </nav>
+<body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- Contenedor principal -->
-    <div id="content-wrapper">
-        <!-- Contenedor general que fluye -->
-        <div id="content-container" class="w-full">
-            
-            <!-- 2. CARRUSEL DE IMÁGENES -->
-            <div id="carousel-slides" class="relative w-full h-[calc(100vh-64px)] overflow-hidden bg-gray-100">
-                <!-- Imagen 1 -->
-                <img src="https://i.imgur.com/0YB0bse.jpeg" class="carousel-slide absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" data-index="0" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/38bdf8/ffffff?text=Trapeadores';" alt="Trapeadores y cubetas de limpieza">
-                <!-- Imagen 2 -->
-                <img src="https://i.imgur.com/eRIr8GZ.jpeg" class="carousel-slide absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" data-index="1" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/38bdf8/ffffff?text=Escobas';" alt="Escobas y plumeros">
-                <!-- Imagen 3 -->
-                <img src="https://i.imgur.com/U863lfj.jpeg" class="carousel-slide absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" data-index="2" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/38bdf8/ffffff?text=Productos';" alt="Productos de limpieza variados">
-                <!-- Imagen 4 -->
-                <img src="https://i.imgur.com/Mwgx4zd.jpeg" class="carousel-slide absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" data-index="3" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/38bdf8/ffffff?text=Esponjas';" alt="Esponjas y cepillos">
-                <!-- Imagen 5 -->
-                <img src="https://i.imgur.com/3TCP76u.jpeg" class="carousel-slide absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" data-index="4" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/38bdf8/ffffff?text=Equipo';" alt="Equipo de limpieza profesional">
+    <!-- Header / Navbar -->
+    <header class="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-broom text-2xl"></i>
+                <h1 class="text-2xl font-bold">NextGen <span class="text-yellow-400">Trapeadores</span></h1>
             </div>
+            <!-- El carrito de compras ha sido eliminado de aquí -->
+        </div>
+    </header>
 
-            <!-- 3. SECCIÓN DE PRODUCTOS: TRAPEADORES (Carrusel Horizontal) -->
-            <section id="trapeadores" class="py-16 bg-white">
-                <div class="max-w-7xl mx-auto px-4 md:px-8">
-                    <!-- Encabezado de la sección (estilo pestaña/título) -->
-                    <div class="flex flex-col items-start mb-6">
-                        <div class="inline-block border-b-4 border-blue-500 pb-2">
-                            <h2 class="font-logo text-3xl md:text-4xl font-bold text-gray-800 uppercase tracking-wide">Trapeadores</h2>
-                        </div>
-                        <p class="mt-4 text-lg text-gray-600 max-w-3xl">
-                            Descubre nuestra línea premium de trapeadores diseñados para máxima absorción y durabilidad. 
-                            Ideales para todo tipo de superficies, dejando tus pisos impecables con menos esfuerzo.
-                        </p>
-                    </div>
-
-                    <!-- Contenedor Deslizable Horizontal (Scrollable) -->
-                    <div class="flex overflow-x-auto gap-6 pb-4 no-scrollbar">
-                        
-                        <!-- Tarjeta 1 (Modelo Clásico) -->
-                        <div class="flex-shrink-0 w-56 sm:w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                            <div class="aspect-[3/4] bg-gray-200 rounded-t-xl overflow-hidden">
-                                <!-- Imagen real 1 -->
-                                <img src="https://i.imgur.com/1G841Vo.jpeg" alt="Trapeador Modelo Clásico" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-3 text-center">
-                                <p class="text-sm text-gray-500 mt-1">Elaborado con algodón de alta densidad, garantiza una absorción superior. Su mango metálico resistente y ergonómico es ideal para uso diario y limpieza profunda.</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Tarjeta 2 (Microfibra Pro) -->
-                        <div class="flex-shrink-0 w-56 sm:w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                            <div class="aspect-[3/4] bg-gray-200 rounded-t-xl overflow-hidden">
-                                <!-- Imagen real 2 -->
-                                <img src="https://i.imgur.com/U1LHk4W.jpeg" alt="Trapeador Microfibra Pro" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-3 text-center">
-                                <p class="text-sm text-gray-500 mt-1">Diseño de microfibra que atrapa el 99% de las bacterias. Ideal para pisos delicados (madera, laminados) y perfecto para usarse en seco o húmedo, sin dejar residuos.</p>
-                            </div>
-                        </div>
-
-                        <!-- Tarjeta 3 (Sistema Giratorio) -->
-                        <div class="flex-shrink-0 w-56 sm:w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                            <div class="aspect-[3/4] bg-gray-200 rounded-t-xl overflow-hidden">
-                                <!-- Imagen real 3 -->
-                                <img src="https://i.imgur.com/l6Elvc2.jpeg" alt="Trapeador Sistema Giratorio" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-3 text-center">
-                                <p class="text-sm text-gray-500 mt-1">Incorpora un cabezal giratorio de 360° para acceder a esquinas difíciles. Su mecanismo de auto-escurrido reduce el esfuerzo físico y mantiene las manos secas.</p>
-                            </div>
-                        </div>
-
-                        <!-- Tarjeta 4 (Repuestos Industriales) -->
-                        <div class="flex-shrink-0 w-56 sm:w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                            <div class="aspect-[3/4] bg-gray-200 rounded-t-xl overflow-hidden">
-                                <!-- Imagen real 4 -->
-                                <img src="https://i.imgur.com/fL2ct0o.jpeg" alt="Trapeador Repuestos Industriales" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-3 text-center">
-                                <p class="text-sm text-gray-500 mt-1">Fibras sintéticas de alta resistencia para uso rudo y profesional. Soporta ciclos de lavado intensos y es compatible con la mayoría de los mangos comerciales.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Botón "Ver Catálogo" -->
-                    <div class="mt-8 text-center">
-                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 uppercase tracking-wider">
-                            Ver Catálogo
-                        </button>
-                    </div>
-                </div>
-            </section>
+    <!-- Banner Principal -->
+    <div class="bg-blue-50 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-extrabold text-blue-900 mb-4">Colección Arcoíris Microfibra</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">La misma calidad de absorción premium, ahora disponible en 9 colores vibrantes para organizar tu limpieza por áreas (código de colores).</p>
         </div>
     </div>
 
-    <script>
-        // Lógica del carrusel para cambiar imágenes automáticamente
-        document.addEventListener('DOMContentLoaded', () => {
-            const slides = document.querySelectorAll('.carousel-slide');
-            let currentSlide = 0;
-            const totalSlides = slides.length;
-            const intervalTime = 3000; // 3000 ms = 3 segundos
-
-            /** Muestra la diapositiva en el índice dado, ocultando las demás con transición de opacidad. */
-            function showSlide(index) {
-                // Asegura que el índice esté dentro del rango [0, totalSlides-1]
-                currentSlide = (index + totalSlides) % totalSlides; 
-                
-                slides.forEach((slide, i) => {
-                    if (i === currentSlide) {
-                        slide.classList.remove('opacity-0');
-                        slide.classList.add('opacity-100');
-                    } else {
-                        slide.classList.remove('opacity-100');
-                        slide.classList.add('opacity-0');
-                    }
-                });
-            }
-
-            /** Avanza a la siguiente diapositiva. */
-            function nextSlide() {
-                showSlide(currentSlide + 1);
-            }
+    <!-- Grid de Productos (Modificado para scroll horizontal) -->
+    <main class="py-12">
+        <div class="container mx-auto">
+            <!-- Título para la sección de productos -->
+            <h3 class="text-2xl font-semibold text-gray-800 px-4 mb-6">Nuestros Modelos Estándar</h3>
             
-            // Inicia el carrusel
-            showSlide(currentSlide);
+            <!-- Contenedor con scroll horizontal -->
+            <div class="flex overflow-x-auto space-x-6 px-4 pb-12" id="product-grid">
+                <!-- Los productos se generarán aquí mediante JS -->
+            </div>
+            
+            <!-- Nueva Imagen de Banner de Colores -->
+            <div class="mt-8 px-4">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center sm:text-left">¡Nuevos Colores en Tienda!</h3>
+                <img src="https://i.imgur.com/c6MWY8M.jpeg" alt="Banner con los nuevos colores de trapeadores" 
+                     class="w-full h-auto object-cover rounded-lg shadow-xl border-4 border-white transition duration-300 hover:scale-[1.01]">
+            </div>
+        </div>
+    </main>
 
-            // Configura el intervalo para el cambio automático cada 3 segundos
-            setInterval(nextSlide, intervalTime);
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 NextGen Trapeadores. Todos los derechos reservados.</p>
+            <p class="text-gray-400 text-sm mt-2">Precios sujetos a cambio sin previo aviso.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Datos de los 9 trapeadores, actualizados con imágenes reales y precios de $220.00
+        const products = [
+            { id: 1, color: "Rojo Mix", hex: "EF4444", price: 220.00, desc: "Ideal para baños y zonas de alto riesgo.", imageUrl: "https://i.imgur.com/fzisuqC.jpeg" },
+            { id: 2, color: "Azul Mix", hex: "3B82F6", price: 220.00, desc: "Perfecto para áreas generales y oficinas.", imageUrl: "https://i.imgur.com/3eTWYzK.jpeg" },
+            { id: 3, color: "Verde Mix", hex: "22C55E", price: 220.00, desc: "Recomendado para cocinas y comedores.", imageUrl: "https://i.imgur.com/cQjJ7yS.jpeg" },
+            { id: 4, color: "Negro Absoluto", hex: "1F2937", price: 220.00, desc: "Máxima discreción, profesional y moderno.", imageUrl: "https://i.imgur.com/kBwd6uz.jpeg" },
+            { id: 5, color: "Azul Marino Clásico", hex: "1E3A8A", price: 220.00, desc: "Alta resistencia y estilo atemporal.", imageUrl: "https://i.imgur.com/lcIc72D.jpeg" },
+            { id: 6, color: "Lila Mix", hex: "A855F7", price: 220.00, desc: "Edición especial ultra suave.", imageUrl: "https://i.imgur.com/deillar.jpeg" },
+            { id: 7, color: "Rosa Clásico", hex: "F472B6", price: 220.00, desc: "Favorito para el hogar y habitaciones.", imageUrl: "https://i.imgur.com/1WZjlzU.jpeg" },
+            { id: 8, color: "Aqua Mix", hex: "2DD4BF", price: 220.00, desc: "Fresco y moderno para salas de estar.", imageUrl: "https://i.imgur.com/DKYxeO0.jpeg" },
+            { id: 9, color: "Gris Titán", hex: "6B7280", price: 220.00, desc: "Discreto, oculta la suciedad visible.", imageUrl: "https://i.imgur.com/Zpp7B88.jpeg" }
+        ];
+
+        const grid = document.getElementById('product-grid');
+
+        // Función para renderizar los productos
+        products.forEach(product => {
+            const card = document.createElement('div');
+            // Clases para desplazamiento: flex-none y w-72 aseguran el ancho fijo y que no se envuelvan.
+            card.className = "flex-none w-72 bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 card-hover border border-gray-100 flex flex-col";
+            
+            card.innerHTML = `
+                <div class="relative">
+                    <!-- Usamos la URL de la imagen proporcionada por el usuario -->
+                    <img src="${product.imageUrl}" alt="Trapeador color ${product.color}" class="w-full h-56 object-cover">
+                    <div class="absolute top-2 right-2 bg-white px-2 py-1 rounded-md text-xs font-bold shadow-sm uppercase tracking-wide text-gray-600">
+                        Microfibra
+                    </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col">
+                    <div class="flex items-center gap-2 mb-2">
+                        <!-- Pequeño círculo de color representativo -->
+                        <div class="w-4 h-4 rounded-full border border-gray-300 shadow-sm" style="background-color: #${product.hex};"></div>
+                        <h3 class="text-xl font-bold text-gray-800">${product.color}</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4 flex-1">${product.desc}</p>
+                    
+                    <!-- Solo el precio, sin el botón de agregar -->
+                    <div class="mt-auto border-t pt-4">
+                        <span class="text-3xl font-bold text-blue-600">$${product.price.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
         });
     </script>
 </body>
